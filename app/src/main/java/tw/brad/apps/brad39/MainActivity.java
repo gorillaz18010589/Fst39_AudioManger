@@ -4,6 +4,7 @@ package tw.brad.apps.brad39;
 // api'com.google.guava:guava:28.0-android'
 //開權限 <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 //<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+//RECORD_AUDIO:錄音權限
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity { private AudioManager amgr;
     private String getAudioFilePathFromUri(Uri uri) {
         Cursor cursor = getContentResolver()
                 .query(uri, null, null, null, null);
-        cursor.moveToFirst();
+        cursor.moveToFirst();//移動到第一列
         int index = cursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA);
         return cursor.getString(index);
     }
